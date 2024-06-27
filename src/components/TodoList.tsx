@@ -16,11 +16,13 @@ interface TodoListProps {
 
 export default function TodoList({ todos }: TodoListProps) {
   return (
-    <div className="space-y-4 space-x-10">
-      <h1 className="text-2xl font-bold space-x-10">ToDo List</h1>
-      {todos.map(todo => (
-        <TodoItem key={todo.id} todo={todo} />
-      ))}
+    <div className="mt-8 px-20">
+      <h1 className="text-2xl font-bold text-gray-900 mb-4">ToDo List</h1>
+      <div className="space-y-4">
+        {todos.map(todo => (
+          <TodoItem key={todo.id} todo={todo} />
+        ))}
+      </div>
     </div>
   );
 }
