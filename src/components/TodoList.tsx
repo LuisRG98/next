@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React from 'react';
 import TodoItem from './TodoItem';
 
 interface Todo {
@@ -8,26 +10,17 @@ interface Todo {
   status: boolean;
 }
 
-const TodoList: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+interface TodoListProps {
+  todos: Todo[];
+}
 
-  useEffect(() => {
-    const fetchTodos = async () => {
-      const response = await fetch('/api/todos');
-      const data = await response.json();
-      setTodos(data);
-    };
-    fetchTodos();
-  }, []);
-
+export default function TodoList({ todos }: TodoListProps) {
   return (
-    <div>
-      <h1>ToDo List</h1>
+    <div className="space-y-4 space-x-10">
+      <h1 className="text-2xl font-bold space-x-10">ToDo List</h1>
       {todos.map(todo => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
     </div>
   );
-};
-
-export default TodoList;
+}

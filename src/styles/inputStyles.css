@@ -1,0 +1,43 @@
+/* Estilos para los inputs */
+.input {
+    padding: 8px 12px; /* Añadir padding para los bordes */
+    border: 1px solid #d1d5db; /* Color del borde */
+    border-radius: 4px; /* Bordes redondeados */
+    outline: none; /* Quitar el borde del enfoque */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Añadir una sombra */
+    transition: border-color 0.2s; /* Transición suave para los cambios en el borde */
+  }
+  
+  .input:focus {
+    border-color: #4f46e5; /* Cambiar el color del borde al enfocar */
+  }
+  
+  /* Estilos para las etiquetas */
+  .input-label {
+    display: block; /* Hacer que las etiquetas sean bloques */
+    margin-bottom: 4px; /* Espacio debajo de las etiquetas */
+    font-weight: 500; /* Negrita para las etiquetas */
+    color: #374151; /* Color del texto de las etiquetas */
+  }
+  
+  /* Estilos para los botones */
+  .button {
+    padding: 8px 16px; /* Añadir padding para los botones */
+    background-color: #4f46e5; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Quitar el borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    transition: background-color 0.2s; /* Transición suave para los cambios en el fondo */
+  }
+  
+  .button:hover {
+    background-color: #4338ca; /* Color de fondo al pasar por encima */
+  }
+  
+  /* Estilos para el formulario */
+  .form-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  

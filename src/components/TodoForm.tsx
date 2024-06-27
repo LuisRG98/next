@@ -1,46 +1,57 @@
-import React, { useState } from 'react';
+'use client';
 
-const TodoForm: React.FC = () => {
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import '@/styles/inputStyles.css'; // Importar las clases de estilo
+
+export default function TodoForm() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    await fetch('/api/todos', {
+
+    const res = await fetch('/api/todos', {
       method: 'POST',
-      body: JSON.stringify({ title, description, status: false }),
+      body: JSON.stringify({ title, description }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    setTitle('');
-    setDescription('');
-    // Refetch or update the todo list here
+
+    if (res.ok) {
+      setTitle('');
+      setDescription('');
+      router.refresh(); // Recargar la página para actualizar la lista de todos
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="space-y-4 form-container">
       <div>
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="title" className="input-label">Title:</label>
         <input
           type="text"
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          className="input"
         />
       </div>
       <div>
-        <label htmlFor="description">Description:</label>
+        <label htmlFor="description" className="input-label">Description:</label>
         <input
           type="text"
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          className="input"
         />
       </div>
-      <button type="submit">Add Todo</button>
+      <button type="submit" className="button">
+        Add Todo
+      </button>
     </form>
   );
-};
-
-export default TodoForm;
+}
